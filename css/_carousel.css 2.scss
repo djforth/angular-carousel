@@ -1,0 +1,168 @@
+.carousel-content {
+  overflow: hidden;
+
+  img {
+    vertical-align: bottom;
+  }  
+
+  .carousel-holder {
+    position: relative;
+    width: 100%;
+
+    .item {
+      // layout
+      height: 100%;
+      position: absolute;
+      left: 0;
+      width: 100%;
+
+      // styling
+      @include background-size(cover);
+      
+      section {
+        height: 100%;
+        // position: relative;
+      }
+    }
+
+    .selected {
+      left: 0;
+    }
+  }
+
+  .carousel-list {
+    position: relative;
+    width: auto;
+    margin: 0;
+    padding:0;
+    left: -50%;
+    float: right;
+
+    ul {
+      position: relative;
+      list-style-type: none;
+      display: inline-block;
+      left: 50%;
+      margin: 0;
+
+      li {
+        display: inline;
+
+        a {
+          float: left;
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          margin: 0 10px;
+
+          background-color: $white;
+          @include border-radius(20px);
+          @include box-shadow(inset black 1px 1px 1px);
+
+          &:hover, &.active{
+            background: $prim;
+          }
+
+          span{
+            @include hidden;
+          }
+        }
+      }
+    }
+  }
+
+  .carousel-nav {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    li {
+      // layout
+      position: absolute;
+      list-style-type: none;
+
+      // styling
+      @include transition(all 0.2s ease-in-out);
+
+      &.next {
+        right: -4px;
+
+        &:hover {
+          right: 0;
+        }
+
+        a {
+          @include border-left-radius(5px);
+        }
+      }
+
+      &.next, &.previous {
+        a {
+          cursor: pointer;
+          position: relative;
+          background-color: $gallery;
+
+          svg {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 80%;
+          }
+        }
+      }
+
+      &.previous {
+        left: -4px;
+
+        &:hover {
+          left: 0;
+        }
+
+        a {
+          @include border-right-radius(5px);
+
+        }
+      }
+
+      a {
+        // layout
+        display: block;
+        float: left;
+
+        overflow: hidden;
+
+        // styling
+        @include transition(all 0.2s ease-in-out);
+      }
+    }
+  }
+
+  .img-holder {
+    // layout
+    display: block;
+    position: relative;
+    width: 100%;
+
+    // styling
+    background-position-x: center;
+    background-repeat: no-repeat;
+  }
+
+  .list-holder {
+    position: absolute;
+    width: 100%;
+  }
+
+  .text-wrapper {
+    position: absolute;
+    left: 0;
+  }
+
+  .wrap {
+    padding: 0;
+  }
+}

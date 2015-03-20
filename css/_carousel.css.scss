@@ -1,0 +1,189 @@
+// Put responsive style rules here
+.carousel-content {
+  // Mobile breakpoint
+  @include at-breakpoint($m_max_cols $tp_break) {
+    .carousel-holder {
+      height: 360px;
+
+      .img-holder {
+        height: 250px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .text-wrapper {
+        // layout
+        min-height: 99px;
+        padding: 5px;
+        bottom: 0;
+        width: 100%;
+        
+        // styling
+        background-color: $bon-jour;
+        border-top: 1px solid $gray;
+
+        h1 {
+          margin: 12px 0 0 0;
+        }
+
+        h2 {
+          padding: 0;
+        }
+
+        h1, h2 {
+          // layout
+          text-align: center;
+          
+          // styling
+          color: $purple;
+          font-size: 2.375em;
+        }
+      }
+    }
+
+    .carousel-nav {
+      top: 20%;
+
+      li {
+        a {
+          height: 85px;
+          width: 30px;
+        }
+      }
+    }
+
+    .list-holder {
+      bottom: 125px;
+    }
+  }
+
+   // Mobile and Tablet portrait breakpoints
+  @include at-breakpoint($m-max-cols $tp-max-cols $d-break) {
+    
+  }
+
+  // Tablet portrait breakpoint
+  @include at-breakpoint($tp_break +1px $tp_max_cols $d_break) {
+      .carousel-holder {
+        height: 278px;
+      }
+
+      .carousel-nav {
+        li {
+           a {
+            height: 85px;
+            width: 30px;
+          }
+        }
+      }
+
+     .carousel-holder {
+       height: 278px;
+
+       section {
+        .img-holder {
+          height: 278px;
+        }
+
+        a {
+          text-decoration: none;
+        }
+
+        .text-wrapper {
+          top: 30px;
+
+          h1, h2 {
+            // layout
+            line-height: 0.9em;
+
+            // styling
+            font-size: 3em;
+          }
+        }
+      }
+    }
+  }
+
+  // Tablet portrait and Desktop breakpoints
+  @include at-breakpoint($tp_break +1px, $d_max_cols) {
+    .carousel-nav {
+      top: 35%;
+    }
+
+    .list-holder {
+      bottom: 5px;
+    }
+
+    .text-wrapper {
+      // layout
+      height: auto;
+      margin: auto;
+      overflow: hidden;
+      padding: 10px 10px 10px 10%;
+      
+      // styling
+      color: $white;
+
+      h1 {
+        color: $purple;
+      }
+
+      h1, h2 {
+        margin: 0 !important;
+
+        span {
+          // layout
+          padding: 10px;
+          
+          // styling
+          background-color: $white;
+        }
+      }
+
+      h2 {
+        color: $bright-gray;
+
+        span {
+          padding: 0 40px 10px 10px;
+        }
+      }
+    }
+  }
+
+  // Desktop breakpoint
+  @include at-breakpoint($d_break + 1px, $d_max_cols) {
+    height: 415px;
+    width: auto;
+
+    .carousel-holder {
+      height: 415px;
+    }
+
+    .carousel-nav {
+      li {
+        a {
+          height: 160px;
+          width: 60px;
+        }
+      }
+    }
+    
+    .img-holder {
+      height: 100%;
+    }
+
+    .text-wrapper {
+      top: 60px;
+
+      h1, h2 {
+        // layout
+        line-height: 1em;
+
+        // styling
+        font-size: 5em;
+      }
+    }
+  }
+}
