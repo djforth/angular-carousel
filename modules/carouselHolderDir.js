@@ -10,7 +10,7 @@ module.exports = [
   '$timeout', "CarouselFcty", function($timeout) {
     return {
       restrict: 'A',
-      templateUrl: 'carousel/carousel-holder.html',
+      templateUrl: 'carousel-holder.html',
       controller: "CarouselCtrl",
       link: function($scope, $elem, $attrs) {
         var loadedCount;

@@ -7,7 +7,7 @@ module.exports = [
     return {
       restrict: 'A',
       transclude: true,
-      templateUrl: "carousel/carousel-item.html",
+      templateUrl: "carousel-item.html",
       scope: {
         carousel: "=carousel"
       },
