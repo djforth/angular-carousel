@@ -1,7 +1,7 @@
 _ = require 'lodash'
 
 
-module.exports = ($http, $q, SetFactoryUrl)->
+module.exports = ($http, $q, setCarouselUrl)->
   carouselData = []
 
   return {
@@ -14,7 +14,7 @@ module.exports = ($http, $q, SetFactoryUrl)->
 
       if _.isEmpty(carouselData)
         page = if page == "" then "home" else page
-        $http.get(SetFactoryUrl.getUrl())
+        $http.get(setCarouselUrl.url)
         .success( (data)->
           carouselData = data
           deferred.resolve(data);

@@ -16,14 +16,16 @@ carousel =  angular.module('$carousel', [
     '$viewportDetection'
   ])
   .factory('CarouselFcty', carouselFcty)
-  .service('SetFactoryUrl', ()->
+  .provider('setCarouselUrl', ()->
     url = null;
     return {
       setUrl:(path)->
         url = path
 
-      getUrl:()->
-        return url
+      $get:()->
+        return {
+          url:url
+        }
     }
   )
   .controller('CarouselCtrl', carouselCtrl)

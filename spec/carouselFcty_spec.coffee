@@ -9,19 +9,22 @@ describe 'CarouselFcty', ->
   ctrl = rootScope = httpBackend = fcty = promise = deferred = srv =  null
   beforeEach ->
     angular.mock.module('$carousel')
+    # .config(["setCarouselUrlProvider", (setCarouselUrlProvider)->
+    #     setCarouselUrlProvider.setUrl('/api/carousels/some-page.json')
+    # ])
 
   beforeEach ->
 
-    angular.mock.inject ($q, $rootScope, $httpBackend, CarouselFcty, SetFactoryUrl)->
+    angular.mock.inject ($q, $rootScope, $httpBackend, CarouselFcty, setCarouselUrl)->
       httpBackend = $httpBackend;
       fcty      = CarouselFcty
-      srv       = SetFactoryUrl
+      setCarouselUrl.url = '/api/carousels/some-page.json'
       deferred  = $q.defer()
       promise   = deferred.promise
       rootScope = $rootScope
 
       # spyOn(srv, "getVenue").and.returnValue('test-venue')
-      spyOn(srv, "getUrl").and.returnValue('/api/carousels/some-page.json')
+      # spyOn(srv, "getUrl").and.returnValue('/api/carousels/some-page.json')
 
 
   it 'should start with empty request', ->

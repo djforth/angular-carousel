@@ -15,15 +15,17 @@ carouselHolderDir = require('./carouselHolderDir.js');
 
 carouselItemDir = require('./carouselItemDir.js');
 
-carousel = angular.module('$carousel', ['$viewportDetection']).factory('CarouselFcty', carouselFcty).service('SetFactoryUrl', function() {
+carousel = angular.module('$carousel', ['$viewportDetection']).factory('CarouselFcty', carouselFcty).provider('setCarouselUrl', function() {
   var url;
   url = null;
   return {
     setUrl: function(path) {
       return url = path;
     },
-    getUrl: function() {
-      return url;
+    $get: function() {
+      return {
+        url: url
+      };
     }
   };
 }).controller('CarouselCtrl', carouselCtrl).directive('carouselHolder', carouselHolderDir).directive('carouselItem', carouselItemDir).run([

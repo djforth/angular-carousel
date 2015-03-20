@@ -2,7 +2,7 @@ var _;
 
 _ = require('lodash');
 
-module.exports = function($http, $q, SetFactoryUrl) {
+module.exports = function($http, $q, setCarouselUrl) {
   var carouselData;
   carouselData = [];
   return {
@@ -17,7 +17,7 @@ module.exports = function($http, $q, SetFactoryUrl) {
       deferred = $q.defer();
       if (_.isEmpty(carouselData)) {
         page = page === "" ? "home" : page;
-        $http.get(SetFactoryUrl.getUrl()).success(function(data) {
+        $http.get(setCarouselUrl.url).success(function(data) {
           carouselData = data;
           return deferred.resolve(data);
         }).error(function() {
