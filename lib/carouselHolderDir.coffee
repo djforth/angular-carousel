@@ -40,6 +40,17 @@ module.exports = ['$timeout', "CarouselFcty", ($timeout)->
 
         {itemIn:itemIn, itemOut:itemOut}
 
+      $scope.setHolderClass = () ->
+        activeItem = $scope.carousels[$scope.itemSelected]
+
+        if _.isUndefined(activeItem)
+          return ""
+
+        unless _.isNull(activeItem.title) and _.isNull(activeItem.subtitle)
+          return "with-text"
+
+        return ""
+
       #Animates old item off and new item on
       $scope.setSelected = (type="next")->
         $scope.animating = true

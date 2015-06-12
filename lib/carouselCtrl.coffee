@@ -48,9 +48,10 @@ module.exports = ["$scope", "$window", "$timeout", "CarouselFcty", ($scope, $win
     {inpos:inpos, outpos:outpos}
 
   $scope.selectItem = (n)->
-    $scope.itemOut = $scope.itemSelected
-    $scope.itemSelected = n
-    $scope.setSelected()
+    if n != $scope.itemSelected
+      $scope.itemOut = $scope.itemSelected
+      $scope.itemSelected = n
+      $scope.setSelected()
 
   $scope.restartTimer = ()->
     $scope.stopAutoplay()

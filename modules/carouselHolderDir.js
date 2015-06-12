@@ -40,6 +40,17 @@ module.exports = [
             itemOut: itemOut
           };
         };
+        $scope.setHolderClass = function() {
+          var activeItem;
+          activeItem = $scope.carousels[$scope.itemSelected];
+          if (_.isUndefined(activeItem)) {
+            return "";
+          }
+          if (!(_.isNull(activeItem.title) && _.isNull(activeItem.subtitle))) {
+            return "with-text";
+          }
+          return "";
+        };
         return $scope.setSelected = function(type) {
           var animationIn, animationOut, items, pos, width;
           if (type == null) {

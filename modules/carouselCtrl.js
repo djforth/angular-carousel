@@ -60,9 +60,11 @@ module.exports = [
       };
     };
     $scope.selectItem = function(n) {
-      $scope.itemOut = $scope.itemSelected;
-      $scope.itemSelected = n;
-      return $scope.setSelected();
+      if (n !== $scope.itemSelected) {
+        $scope.itemOut = $scope.itemSelected;
+        $scope.itemSelected = n;
+        return $scope.setSelected();
+      }
     };
     $scope.restartTimer = function() {
       $scope.stopAutoplay();
