@@ -46,7 +46,7 @@ module.exports = ['$timeout', "CarouselFcty", ($timeout)->
         if _.isUndefined(activeItem)
           return ""
 
-        unless _.isNull(activeItem.title) and _.isNull(activeItem.subtitle)
+        if !_.isNull(activeItem.title) or !_.isNull(activeItem.subtitle)
           return "with-text"
 
         return ""

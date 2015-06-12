@@ -185,7 +185,7 @@ describe 'Carousel Holder Directive', ->
 
 
     describe 'link functions', ->
-      citems = null
+      cholder = citems = null
 
       beforeEach ->
         citems = document.querySelectorAll(".carousel-inner>.item")
@@ -210,6 +210,67 @@ describe 'Carousel Holder Directive', ->
         expect(elems.itemIn).toEqual(_.first(citems))
         expect(elems.itemOut).toEqual(_.last(citems))
 
+      describe 'setHolderClass', ->
+        describe 'check method', ->
+          it 'should set the class on the carousel holder', ->
+            spyOn(scope, "setHolderClass").and.returnValue("my-class")
+            scope.$apply()
+
+            cholder = angular.element(document.querySelector(".carousel-holder"))
+
+            expect(cholder.hasClass("my-class")).toBeTruthy()
+
+        describe 'set the correct classes', ->
+          beforeEach ->
+            scope.carousels.push({
+              type: "carousel",
+              title: null,
+              subtitle: null,
+              url: "http://better.org.uk",
+              main: {
+                src: "http://fillmurray.com/g/1400/300.url",
+                alt: "Bill Murray of course"
+              }
+            });
+
+          it 'should not set the class if there is no selected item', ->
+            scope.itemSelected = null
+            result = scope.setHolderClass()
+
+            expect(result).toEqual("")
+
+          it 'should set the class if there is a selected item', ->
+            scope.itemSelected = 0
+            result = scope.setHolderClass()
+
+            expect(result).toEqual("with-text")
+
+          it 'should not set the class if there is no title or subtitle', ->
+            scope.itemSelected = 2
+            result = scope.setHolderClass()
+
+            expect(result).toEqual("")
+
+          it 'should set the class if there is a title but no subtitle', ->
+            scope.itemSelected = 2
+            scope.carousels[2].title = "Phil"
+            result = scope.setHolderClass()
+
+            expect(result).toEqual("with-text")
+
+          it 'should set the class if there is a subtitle but no title', ->
+            scope.itemSelected = 2
+            scope.carousels[2].subtitle = "Collins"
+            result = scope.setHolderClass()
+
+            expect(result).toEqual("with-text")
+
+
+
+
+
+
+
       describe 'setSelected', ->
 
         beforeEach ->
@@ -223,30 +284,3 @@ describe 'Carousel Holder Directive', ->
           scope.setSelected('next')
           expect(scope.animating).toBeTruthy()
           # expect(scope.TweenLite.set).toHaveBeenCalled()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
