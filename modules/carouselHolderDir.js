@@ -46,7 +46,7 @@ module.exports = [
           if (_.isUndefined(activeItem)) {
             return "";
           }
-          if (!(_.isNull(activeItem.title) && _.isNull(activeItem.subtitle))) {
+          if (!_.isNull(activeItem.title) || !_.isNull(activeItem.subtitle)) {
             return "with-text";
           }
           return "";
