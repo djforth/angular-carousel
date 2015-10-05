@@ -70,10 +70,11 @@ module.exports = ["$scope", "$window", "$timeout", "resizer", "CarouselFcty", ($
   $scope.showCarousel = (n)->
     $scope.itemSelected == n or $scope.itemOut == n
 
-  resizer.trackSize(device) ->
+  resizer.trackSize((device) ->
     $scope.device = device
     $scope.$apply()
-    return
+    return null
+  );
 
   $scope.stopAutoplay = ()->
     if (angular.isDefined($scope.timer))

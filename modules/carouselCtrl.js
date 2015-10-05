@@ -83,9 +83,10 @@ module.exports = [
     $scope.showCarousel = function(n) {
       return $scope.itemSelected === n || $scope.itemOut === n;
     };
-    resizer.trackSize(device)(function() {
+    resizer.trackSize(function(device) {
       $scope.device = device;
       $scope.$apply();
+      return null;
     });
     return $scope.stopAutoplay = function() {
       if (angular.isDefined($scope.timer)) {
