@@ -1,6 +1,6 @@
 require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"angular-mocks":[function(require,module,exports){
 /**
- * @license AngularJS v1.3.20
+ * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -790,8 +790,8 @@ angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
       };
     });
 
-    $provide.decorator('$animate', ['$delegate', '$$asyncCallback', '$timeout', '$browser', '$rootScope', '$$rAF',
-                            function($delegate,   $$asyncCallback,   $timeout,   $browser,   $rootScope,   $$rAF) {
+    $provide.decorator('$animate', ['$delegate', '$$asyncCallback', '$timeout', '$browser',
+                            function($delegate,   $$asyncCallback,   $timeout,   $browser) {
       var animate = {
         queue: [],
         cancel: $delegate.cancel,
@@ -811,43 +811,6 @@ angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
             fn();
           });
           reflowQueue = [];
-        },
-        flush: function() {
-          $rootScope.$digest();
-          var doNextRun, somethingFlushed = false;
-          do {
-            doNextRun = false;
-            if (reflowQueue.length) {
-              doNextRun = somethingFlushed = true;
-              this.triggerReflow();
-            }
-            if ($$rAF.queue.length) {
-              doNextRun = somethingFlushed = true;
-              $$rAF.flush();
-            }
-            if ($$asyncCallback.queue.length) {
-              doNextRun = somethingFlushed = true;
-              this.triggerCallbackEvents();
-            }
-            if (timeoutsRemaining()) {
-              var oldValue = timeoutsRemaining();
-              this.triggerCallbackPromise();
-              var newValue = timeoutsRemaining();
-              if (newValue < oldValue) {
-                doNextRun = somethingFlushed = true;
-              }
-            }
-          } while (doNextRun);
-
-          if (!somethingFlushed) {
-            throw new Error('No pending animations ready to be closed or flushed');
-          }
-
-          $rootScope.$digest();
-
-          function timeoutsRemaining() {
-            return $browser.deferredFns.length;
-          }
         }
       };
 
@@ -1797,15 +1760,14 @@ angular.mock.$TimeoutDecorator = ['$delegate', '$browser', function($delegate, $
 }];
 
 angular.mock.$RAFDecorator = ['$delegate', function($delegate) {
-  var queue, rafFn = function(fn) {
+  var queue = [];
+  var rafFn = function(fn) {
     var index = queue.length;
     queue.push(fn);
     return function() {
       queue.splice(index, 1);
     };
   };
-
-  queue = rafFn.queue = [];
 
   rafFn.supported = $delegate.supported;
 
@@ -1819,22 +1781,22 @@ angular.mock.$RAFDecorator = ['$delegate', function($delegate) {
       queue[i]();
     }
 
-    queue.length = 0;
+    queue = [];
   };
 
   return rafFn;
 }];
 
 angular.mock.$AsyncCallbackDecorator = ['$delegate', function($delegate) {
-  var queue, addFn = function(fn) {
-    queue.push(fn);
+  var callbacks = [];
+  var addFn = function(fn) {
+    callbacks.push(fn);
   };
-  queue = addFn.queue = [];
   addFn.flush = function() {
-    angular.forEach(queue, function(fn) {
+    angular.forEach(callbacks, function(fn) {
       fn();
     });
-    queue.length = 0;
+    callbacks = [];
   };
   return addFn;
 }];
@@ -2283,8 +2245,7 @@ if (window.jasmine || window.mocha) {
 
     if (injector) {
       injector.get('$rootElement').off();
-      var $browser = injector.get('$browser');
-      if ($browser.pollFns) $browser.pollFns.length = 0;
+      injector.get('$browser').pollFns.length = 0;
     }
 
     // clean up jquery's fragment cache

@@ -6,15 +6,13 @@ module.exports = [() ->
 
     transclude: true,
     templateUrl: "carousel-item.html"
-    scope: {
-      background: "=background",
-      subtitle: "=subtitle",
-      title: "=title",
-      url: "=url"
+    scope:{
+      carousel:"=carousel"
     },
     link:($scope, $elem, $attrs)->
       $scope.$watch "carousel", (car)->
         unless _.isUndefined car
+          url = car.main.src
           img = angular.element($elem.children().children()[0])
-          img.css({'background-image':"url('#{$scope.background}')", 'background-size':'cover'})
+          img.css({'background-image':"url('#{url}')", 'background-size':'cover'})
   }]

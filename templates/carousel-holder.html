@@ -3,7 +3,7 @@
     <div class="carousel-holder" ng-class="setHolderClass()">
       <div class="carousel-inner">
         <div class="item" id="item{{$index}}" ng-repeat="item in carousels" ng-show="showCarousel($index)">
-          <section carousel-item background="setBackground(item)" subtitle="item.subtitle" title="item.title" url="item.url"></section>
+          <section carousel-item carousel="item"></section>
         </div>
       </div>
       <div class="list-holder">
