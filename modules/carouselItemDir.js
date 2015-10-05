@@ -9,16 +9,18 @@ module.exports = [
       transclude: true,
       templateUrl: "carousel-item.html",
       scope: {
-        carousel: "=carousel"
+        background: "=background",
+        subtitle: "=subtitle",
+        title: "=title",
+        url: "=url"
       },
       link: function($scope, $elem, $attrs) {
         return $scope.$watch("carousel", function(car) {
-          var img, url;
+          var img;
           if (!_.isUndefined(car)) {
-            url = car.main.src;
             img = angular.element($elem.children().children()[0]);
             return img.css({
-              'background-image': "url('" + url + "')",
+              'background-image': "url('" + $scope.background + "')",
               'background-size': 'cover'
             });
           }

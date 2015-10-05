@@ -3,12 +3,13 @@ var _;
 _ = require('lodash');
 
 module.exports = [
-  "$scope", "$window", "$timeout", "CarouselFcty", function($scope, $window, $timeout, CarouselFcty) {
+  "$scope", "$window", "$timeout", "resizer", "CarouselFcty", function($scope, $window, $timeout, resizer, CarouselFcty) {
     var delay;
     $scope.itemOut = -1;
     $scope.itemIn = 0;
     $scope.itemSelected = 0;
     $scope.carousels = [];
+    $scope.device = resizer.getDevice();
     delay = Math.round(parseFloat(5) * 1000);
     CarouselFcty.getData().then(function(results) {
       $scope.carousels = results;
@@ -37,6 +38,9 @@ module.exports = [
         $scope.itemSelected = $scope.carouselLength - 1;
       }
       return $scope.setSelected("previous");
+    };
+    $scope.setBackground = function(item) {
+      return item[$scope.device].src;
     };
     $scope.setClass = function(n) {
       if ($scope.itemSelected === n) {
@@ -79,6 +83,10 @@ module.exports = [
     $scope.showCarousel = function(n) {
       return $scope.itemSelected === n || $scope.itemOut === n;
     };
+    resizer.trackSize(device)(function() {
+      $scope.device = device;
+      $scope.$apply();
+    });
     return $scope.stopAutoplay = function() {
       if (angular.isDefined($scope.timer)) {
         $timeout.cancel($scope.timer);

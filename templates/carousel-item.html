@@ -1,14 +1,14 @@
-<a href='{{carousel.url}}' ng-if='carousel.url'>
+<a href='{{url}}' ng-if='url'>
   <div class='img-holder'></div>
-  <div class='text-wrapper' ng-if='carousel.title'>
-    <h1 class="gg up-c"><span>{{carousel.title}}</span></h1>
-    <h2 class="gg up-c" ng-if='carousel.subtitle'><span>{{carousel.subtitle}}</span></h2>
+  <div class='text-wrapper' ng-if='title'>
+    <h1 class="gg up-c"><span>{{title}}</span></h1>
+    <h2 class="gg up-c" ng-if='subtitle'><span>{{subtitle}}</span></h2>
   </div>
 </a>
-<span ng-if='!carousel.url'>
+<span ng-if='!url'>
   <div class='img-holder'></div>
-  <div class='text-wrapper' ng-if='carousel.title'>
-    <h1 class="gg up-c"><span>{{carousel.title}}</span></h1>
-    <h2 class="gg up-c" ng-if='carousel.subtitle'><span>{{carousel.subtitle}}</span></h2>
+  <div class='text-wrapper' ng-if='title'>
+    <h1 class="gg up-c"><span>{{title}}</span></h1>
+    <h2 class="gg up-c" ng-if='subtitle'><span>{{subtitle}}</span></h2>
   </div>
 </span>

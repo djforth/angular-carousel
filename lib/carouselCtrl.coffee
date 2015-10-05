@@ -1,10 +1,11 @@
 _ = require('lodash')
 
-module.exports = ["$scope", "$window", "$timeout", "CarouselFcty", ($scope, $window, $timeout, CarouselFcty)->
+module.exports = ["$scope", "$window", "$timeout", "resizer", "CarouselFcty", ($scope, $window, $timeout, resizer, CarouselFcty)->
   $scope.itemOut      = -1
   $scope.itemIn       = 0
   $scope.itemSelected = 0
   $scope.carousels    = []
+  $scope.device       = resizer.getDevice()
   delay = Math.round(parseFloat(5) * 1000)
 
   CarouselFcty.getData().then (results)->
@@ -33,6 +34,9 @@ module.exports = ["$scope", "$window", "$timeout", "CarouselFcty", ($scope, $win
       $scope.itemSelected = $scope.carouselLength - 1
 
     $scope.setSelected("previous")
+
+  $scope.setBackground = (item)->
+    return item[$scope.device].src
 
   $scope.setClass = (n)->
     return if $scope.itemSelected == n then "active" else ""
@@ -65,6 +69,11 @@ module.exports = ["$scope", "$window", "$timeout", "CarouselFcty", ($scope, $win
 
   $scope.showCarousel = (n)->
     $scope.itemSelected == n or $scope.itemOut == n
+
+  resizer.trackSize(device) ->
+    $scope.device = device
+    $scope.$apply()
+    return
 
   $scope.stopAutoplay = ()->
     if (angular.isDefined($scope.timer))
