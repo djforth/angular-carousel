@@ -7,13 +7,13 @@ _ = require('lodash');
 
 viewDetection = require('viewport-detection');
 
-carouselFcty = require('./carouselFcty.coffee');
+carouselFcty = require('./carouselFcty');
 
-carouselCtrl = require('./carouselCtrl.coffee');
+carouselCtrl = require('./carouselCtrl');
 
-carouselHolderDir = require('./carouselHolderDir.coffee');
+carouselHolderDir = require('./carouselHolderDir');
 
-carouselItemDir = require('./carouselItemDir.coffee');
+carouselItemDir = require('./carouselItemDir');
 
 carousel = angular.module('$carousel', ['$viewportDetection']).factory('CarouselFcty', carouselFcty).provider('setCarouselUrl', function() {
   var url;
