@@ -13,8 +13,8 @@ module.exports = [() ->
       url: "=url"
     },
     link:($scope, $elem, $attrs)->
-      $scope.$watch "carousel", (car)->
-        unless _.isUndefined car
+      $scope.$watch "background", (bg)->
+        unless _.isUndefined bg
           img = angular.element($elem.children().children()[0])
           img.css({'background-image':"url('#{$scope.background}')", 'background-size':'cover'})
   }]

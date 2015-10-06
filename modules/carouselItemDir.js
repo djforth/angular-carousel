@@ -15,9 +15,9 @@ module.exports = [
         url: "=url"
       },
       link: function($scope, $elem, $attrs) {
-        return $scope.$watch("carousel", function(car) {
+        return $scope.$watch("background", function(bg) {
           var img;
-          if (!_.isUndefined(car)) {
+          if (!_.isUndefined(bg)) {
             img = angular.element($elem.children().children()[0]);
             return img.css({
               'background-image': "url('" + $scope.background + "')",
