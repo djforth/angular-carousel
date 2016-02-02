@@ -12,7 +12,7 @@ main = {
 }
 
 //Leisure only Templates
-gulp.task('templates:main', function () {
+gulp.task('templates', function () {
     gulp.src(main.src)
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(templateCache(main.opts))

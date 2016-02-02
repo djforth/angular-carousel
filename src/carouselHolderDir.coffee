@@ -1,5 +1,5 @@
-require 'tween-lite'
-require 'css-plugin'
+require 'gsap/src/uncompressed/TimelineLite.js'
+require 'gsap/src/uncompressed/plugins/CSSPlugin'
 
 _ = require('lodash')
 

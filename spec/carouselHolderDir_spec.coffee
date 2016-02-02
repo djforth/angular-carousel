@@ -1,13 +1,13 @@
 require 'angular'
 require 'angular-mocks'
 
-require '../lib/carousel.coffee'
+require '../src/carousel.coffee'
 _ = require 'lodash'
 
 mockdata    = require("./factory/carousel_data.coffee")
 
 
-directives = require('directives-tests')
+directives = require('@djforth/angular-jasmine-helpers').directiveTests
 
 
 describe 'Carousel Holder Directive', ->

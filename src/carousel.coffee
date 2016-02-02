@@ -4,7 +4,7 @@ require('angular')
 _  = require('lodash')
 
 # Utilities
-viewDetection = require('viewport-detection')
+viewDetection = require('@djforth/viewport-detection')
 # pagePath      = require('../utils/page_path.coffee')
 
 carouselFcty      = require('./carouselFcty.coffee')
