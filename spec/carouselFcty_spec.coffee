@@ -1,7 +1,7 @@
 require 'angular'
 require 'angular-mocks'
 require '../lib/carousel.coffee'
-fctyTests   = require('factory-tests')
+fctyTests   = require('@djforth/angular-jasmine-helpers').factoryTests
 
 mockdata    = require("./factory/carousel_data.coffee")
 

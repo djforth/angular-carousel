@@ -5,11 +5,7 @@ require '../lib/carousel.coffee'
 _ = require 'lodash'
 
 mockdata    = require("./factory/carousel_data.coffee")
-
-
-
-directives = require('directives-tests')
-
+directives = require('@djforth/angular-jasmine-helpers').directiveTests;
 
 describe 'Carousel Item Directive', ->
   element = scope = isoScope = fcty = promise = deferred = spy = null
