@@ -1,6 +1,6 @@
 {
   "name": "angular-carousel",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "dependencies": {
     "@djforth/angular-jasmine-helpers": {
       "version": "1.0.7",
