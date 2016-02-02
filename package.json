@@ -1,6 +1,6 @@
 {
-  "name": "angular-carousel",
-  "version": "0.0.0",
+  "name": "@djforth/angular-carousel",
+  "version": "1.0.0",
   "description": "Angular Carousel",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/djforth/angular-carousel.git"
+    "url": "git+https://github.com/djforth/angular-carousel.git"
   },
   "bugs": {
     "url": "https://github.com/djforth/angular-carousel/issues"
