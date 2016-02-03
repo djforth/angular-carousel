@@ -7,10 +7,10 @@ _  = require('lodash')
 viewDetection = require('@djforth/viewport-detection')
 # pagePath      = require('../utils/page_path.coffee')
 
-carouselFcty      = require('./carouselFcty.coffee')
-carouselCtrl      = require('./carouselCtrl.coffee')
-carouselHolderDir = require('./carouselHolderDir.coffee')
-carouselItemDir   = require('./carouselItemDir.coffee')
+carouselFcty      = require('./carouselFcty')
+carouselCtrl      = require('./carouselCtrl')
+carouselHolderDir = require('./carouselHolderDir')
+carouselItemDir   = require('./carouselItemDir')
 
 carousel =  angular.module('$carousel', [
     '$viewportDetection'

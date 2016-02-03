@@ -1,8 +1,8 @@
 require 'angular'
 require 'angular-mocks'
-require '../src/carousel.coffee'
+require '../src/carousel'
 ctrlTests   = require('@djforth/angular-jasmine-helpers').controllerTests
-mockdata    = require("./factory/carousel_data.coffee")
+mockdata    = require("./factory/carousel_data")
 
 
 describe 'CarouselCtrl', ->
