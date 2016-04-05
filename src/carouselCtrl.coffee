@@ -1,4 +1,4 @@
-_ = require('lodash')
+_ = require('lodash/core')
 
 module.exports = ["$scope", "$window", "$timeout", "CarouselFcty", ($scope, $window, $timeout, CarouselFcty)->
   $scope.itemOut      = -1

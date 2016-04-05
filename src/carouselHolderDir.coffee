@@ -1,7 +1,7 @@
 require 'gsap/src/uncompressed/TimelineLite.js'
 require 'gsap/src/uncompressed/plugins/CSSPlugin'
 
-_ = require('lodash')
+_ = require('lodash/core')
 
 module.exports = ['$timeout', "CarouselFcty", ($timeout)->
 

@@ -1,10 +1,10 @@
 require 'angular'
 require 'angular-mocks'
 
-require '../src/carousel'
+require '../src/carousel.coffee'
 _ = require 'lodash'
 
-mockdata    = require("./factory/carousel_data")
+mockdata    = require("./factory/carousel_data.coffee")
 
 
 directives = require('@djforth/angular-jasmine-helpers').directiveTests

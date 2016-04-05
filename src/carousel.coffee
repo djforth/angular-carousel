@@ -1,16 +1,16 @@
 'use strict'
 
 require('angular')
-_  = require('lodash')
+_  = require('lodash/core')
 
 # Utilities
 viewDetection = require('@djforth/viewport-detection')
 # pagePath      = require('../utils/page_path.coffee')
 
-carouselFcty      = require('./carouselFcty')
-carouselCtrl      = require('./carouselCtrl')
-carouselHolderDir = require('./carouselHolderDir')
-carouselItemDir   = require('./carouselItemDir')
+carouselFcty      = require('./carouselFcty.coffee')
+carouselCtrl      = require('./carouselCtrl.coffee')
+carouselHolderDir = require('./carouselHolderDir.coffee')
+carouselItemDir   = require('./carouselItemDir.coffee')
 
 carousel =  angular.module('$carousel', [
     '$viewportDetection'
